@@ -9,7 +9,4 @@ import com.lp3.alfa_beto.entities.Estudante;
 
 @Repository
 public interface EstudanteRepository extends JpaRepository<Estudante, Long> {
-
-    public List<Estudante> findAllByIdMedalha(Long idMedalha);
-
 }
