@@ -31,11 +31,11 @@ public class Estudante {
     private String senha;
 
     @ManyToMany
-    @JoinTable(name = "Estudante_Medalha", joinColumns = @JoinColumn(name = "id_estudante"), inverseJoinColumns = @JoinColumn(name = "id_medalha"))
+    @JoinTable(name = "estudante_medalha", joinColumns = @JoinColumn(name = "id_estudante"), inverseJoinColumns = @JoinColumn(name = "id_medalha"))
     private List<Medalha> medalhas;
 
     @ManyToMany
-    @JoinTable(name = "Estudante_Atividade", joinColumns = @JoinColumn(name = "id_estudante"), inverseJoinColumns = @JoinColumn(name = "id_atividade"))
+    @JoinTable(name = "estudante_atividade", joinColumns = @JoinColumn(name = "id_estudante"), inverseJoinColumns = @JoinColumn(name = "id_atividade"))
     private List<Atividade> atividades;
 
     @ManyToMany(mappedBy = "estudantes")
