@@ -5,11 +5,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,9 +24,7 @@ public class Atividade {
 
     private String descricao;
     private String titulo;
-    private double nota;
-    private LocalDateTime dataDeAvaliacao;
 
-    @ManyToMany(mappedBy = "atividades")
-    private List<Estudante> estudantes;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "atividade")
+    private List<EstudanteAtividade> estudantes;
 }
