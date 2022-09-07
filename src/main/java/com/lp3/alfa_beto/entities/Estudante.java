@@ -25,9 +25,16 @@ public class Estudante {
     @Column(name = "id_estudante")
     private Long id;
 
+    @Column
     private String nome;
+
+    @Column
     private String email;
+
+    @Column(unique = true)
     private String matricula;
+
+    @Column
     private String senha;
 
     @ManyToMany
