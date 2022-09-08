@@ -1,6 +1,8 @@
 package com.lp3.alfa_beto.components;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -56,7 +58,45 @@ public class MainComponent {
      * Listar atividades por título ou descrição (operador containing)
      */
     public void consultaA() {
+        // Falta arrumar o repositório (fazer a consulta com @Query)
+    }
 
+    /*
+     * Listar atividades por usuário (parâmetro: id ou objeto usuário)
+     */
+    public void consultaB() {
+        List<Atividade> atividades = atividadeService.findAllByEstudante(e1);
+
+        System.out.println("Atividades do estudante " + e1.getNome());
+        for (Atividade atividade : atividades) {
+            System.out.println(atividade.toString());
+        }
+    }
+
+    /*
+     * Listar medalhas por usuário (parâmetro: id ou objeto usuário)
+     */
+    public void consultaC() {
+        List<Medalha> medalhas = medalhaService.findAllByEstudante(e1);
+
+        System.out.println("Medalhas do estudante " + e1.getNome());
+        for (Medalha medalha : medalhas) {
+            System.out.println(medalha.toString());
+        }
+    }
+
+    /*
+     * Listar usuários que possuem determinada medalha (parâmetro: id medalha ou
+     * objeto medalha)
+     */
+    public void consultaD() {
+        List<Estudante> estudantes = estudanteService.findAllByMedalhas(new ArrayList<>().add(m1));
+
+        System.out.println("Estudantes com a medalha " + m1.getTitulo());
+
+        for (Estudante estudante : estudantes) {
+            System.out.println(estudante.toString());
+        }
     }
 
     /*
@@ -81,15 +121,21 @@ public class MainComponent {
      * Cria três atividades de exemplo
      */
     public void criarAtividades() {
+        List<Estudante> estudantes = new ArrayList<>();
+        estudantes.add(e1);
+        estudantes.add(e2);
+
         a1.setDescricao("Qual a cor do cavalo branco de Napoleão?");
         a1.setTitulo("Atividade Napoleão");
         a1.setNota(10);
         a1.setDataDeAvaliacao(LocalDateTime.now().minusDays(1));
+        a1.setEstudantes(estudantes);
 
         a2.setDescricao("Onde nasceu Napoleão?");
         a2.setTitulo("Atividade Napoleão");
         a2.setNota(8.5);
         a2.setDataDeAvaliacao(LocalDateTime.now().minusDays(1).minusMinutes(30));
+        a2.setEstudantes(estudantes);
 
         a3.setDescricao("Qual a soma de 2 + 2?");
         a3.setTitulo("Atividade 2");
