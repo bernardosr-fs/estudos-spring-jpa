@@ -1,5 +1,6 @@
 package com.lp3.alfa_beto.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -41,12 +42,20 @@ public class Estudante {
 
     @ManyToMany
     @JoinTable(name = "estudante_medalha", joinColumns = @JoinColumn(name = "id_estudante"), inverseJoinColumns = @JoinColumn(name = "id_medalha"))
-    private List<Medalha> medalhas;
+    private List<Medalha> medalhas = new ArrayList<Medalha>();
 
     @ManyToMany
     @JoinTable(name = "estudante_atividade", joinColumns = @JoinColumn(name = "id_estudante"), inverseJoinColumns = @JoinColumn(name = "id_atividade"))
-    private List<Atividade> atividades;
+    private List<Atividade> atividades = new ArrayList<Atividade>();
 
     @ManyToMany(mappedBy = "estudantes")
-    private List<Responsavel> responsaveis;
+    private List<Responsavel> responsaveis = new ArrayList<Responsavel>();
+
+    public void addMedalha(Medalha medalha) {
+        this.medalhas.add(medalha);
+    }
+
+    public void addAtividade(Atividade atividade) {
+        this.atividades.add(atividade);
+    }
 }

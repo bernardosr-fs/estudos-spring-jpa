@@ -11,5 +11,5 @@ import com.lp3.alfa_beto.entities.Medalha;
 @Repository
 public interface MedalhaRepository extends JpaRepository<Medalha, Long> {
 
-    public List<Medalha> findAllByEstudantes(List<Estudante> estudantes);
+    // public List<Medalha> findAllByEstudantes(List<Estudante> estudantes);
 }

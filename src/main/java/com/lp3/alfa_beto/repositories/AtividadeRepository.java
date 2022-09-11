@@ -20,5 +20,5 @@ public interface AtividadeRepository extends JpaRepository<Atividade, Long> {
 
     public List<Atividade> findByDataDeAvaliacaoBetween(LocalDateTime dataInicial, LocalDateTime dataFinal);
 
-    public List<Atividade> findAllByEstudantes(List<Estudante> estudantes);
+    public List<Atividade> findAllByEstudantesIn(List<Estudante> estudantes);
 }

@@ -3,6 +3,7 @@ package com.lp3.alfa_beto.entities;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -34,5 +35,10 @@ public class Atividade {
     private LocalDateTime dataDeAvaliacao;
 
     @ManyToMany(mappedBy = "atividades")
-    private List<Estudante> estudantes;
+    private List<Estudante> estudantes = new ArrayList<Estudante>();
+
+    // add estudantes
+    public void addEstudante(Estudante estudante) {
+        this.estudantes.add(estudante);
+    }
 }

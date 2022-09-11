@@ -1,5 +1,6 @@
 package com.lp3.alfa_beto.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -34,5 +35,9 @@ public class Responsavel {
 
     @ManyToMany
     @JoinTable(name = "responsavel_estudante", joinColumns = @JoinColumn(name = "id_responsavel"), inverseJoinColumns = @JoinColumn(name = "id_estudante"))
-    private List<Estudante> estudantes;
+    private List<Estudante> estudantes = new ArrayList<Estudante>();
+
+    public void addEstudante(Estudante estudante) {
+        this.estudantes.add(estudante);
+    }
 }

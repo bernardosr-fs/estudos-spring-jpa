@@ -20,6 +20,10 @@ public class AtividadeService {
     }
 
     public List<Atividade> findAllByEstudantes(List<Estudante> estudantes) {
-        return atividadeRepository.findAllByEstudantes(estudantes);
+        return atividadeRepository.findAllByEstudantesIn(estudantes);
+    }
+
+    public List<Atividade> findAll() {
+        return atividadeRepository.findAll();
     }
 }

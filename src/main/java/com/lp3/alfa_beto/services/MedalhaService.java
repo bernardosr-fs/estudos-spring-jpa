@@ -19,8 +19,11 @@ public class MedalhaService {
         medalhaRepository.save(medalha);
     }
 
-    public List<Medalha> findAllByEstudantes(List<Estudante> estudantes) {
-        return medalhaRepository.findAllByEstudantes(estudantes);
-    }
+    // public List<Medalha> findAllByEstudantes(List<Estudante> estudantes) {
+    // return medalhaRepository.findAllByEstudantes(estudantes);
+    // }
 
+    public List<Medalha> findAll() {
+        return medalhaRepository.findAll();
+    }
 }

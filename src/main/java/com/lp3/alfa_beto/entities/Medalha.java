@@ -2,6 +2,7 @@ package com.lp3.alfa_beto.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,5 +31,5 @@ public class Medalha {
     private String titulo;
 
     @ManyToMany(mappedBy = "medalhas")
-    private List<Estudante> estudantes;
+    private List<Estudante> estudantes = new ArrayList<Estudante>();
 }
