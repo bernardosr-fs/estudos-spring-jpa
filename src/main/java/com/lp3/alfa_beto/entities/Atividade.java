@@ -6,11 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,14 +27,7 @@ public class Atividade {
 
     private String descricao;
     private String titulo;
-    private double nota;
-    private LocalDateTime dataDeAvaliacao;
 
-    @ManyToMany(mappedBy = "atividades")
-    private List<Estudante> estudantes = new ArrayList<Estudante>();
-
-    // add estudantes
-    public void addEstudante(Estudante estudante) {
-        this.estudantes.add(estudante);
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "atividade")
+    private List<EstudanteAtividade> estudantes;
 }
