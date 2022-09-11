@@ -22,4 +22,8 @@ public class AtividadeService {
     public List<Atividade> findAll() {
         return atividadeRepository.findAll();
     }
+
+    public List<Atividade> findAllByTituloOrDescricao(String titulo, String descricao) {
+        return atividadeRepository.findAllByTituloOrDescricaoContainingIgnoreCase(titulo, descricao);
+    }
 }

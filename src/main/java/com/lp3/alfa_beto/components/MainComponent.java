@@ -1,6 +1,7 @@
 package com.lp3.alfa_beto.components;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -60,6 +61,7 @@ public class MainComponent {
         criarMedalhas();
         criarResponsaveis();
 
+        // consultaA();
         // consultaB();
     }
 
@@ -67,7 +69,15 @@ public class MainComponent {
      * Listar atividades por título ou descrição (operador containing)
      */
     public void consultaA() {
-        // Falta arrumar o repositório (fazer a consulta com @Query)
+        // Deve retornar a1 e a3
+        List<Atividade> atividades = atividadeService.findAllByTituloOrDescricao("Atividade 2",
+                "Qual a cor do cavalo branco de Napoleão?");
+
+        System.out.println();
+        for (Atividade atividade : atividades) {
+            System.out.println(atividade.toString());
+        }
+        System.out.println();
     }
 
     /*

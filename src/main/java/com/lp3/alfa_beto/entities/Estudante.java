@@ -14,7 +14,6 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Estudante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,5 +44,11 @@ public class Estudante {
 
     public void addMedalha(Medalha medalha) {
         this.medalhas.add(medalha);
+    }
+
+    @Override
+    public String toString() {
+        return "Estudante [email=" + email + ", id=" + id + ", matricula=" + matricula + ", nome=" + nome + ", senha="
+                + senha + "]";
     }
 }

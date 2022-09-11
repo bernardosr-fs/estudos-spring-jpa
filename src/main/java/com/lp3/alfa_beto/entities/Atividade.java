@@ -17,7 +17,6 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class Atividade {
 
     @Id
@@ -30,4 +29,9 @@ public class Atividade {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "atividade")
     private List<EstudanteAtividade> estudantes;
+
+    @Override
+    public String toString() {
+        return "Atividade [descricao=" + descricao + ", id=" + id + ", titulo=" + titulo + "]";
+    }
 }
