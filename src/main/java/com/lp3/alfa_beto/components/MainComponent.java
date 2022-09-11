@@ -144,12 +144,12 @@ public class MainComponent {
 
             ea2.setAtividade(a1);
             ea2.setEstudante(e1);
-            ea1.setDataDeAvaliacao(LocalDateTime.now().minusHours(4));
+            ea2.setDataDeAvaliacao(LocalDateTime.now().minusHours(4));
             ea2.setNota(9.5);
 
             ea3.setAtividade(a3);
             ea3.setEstudante(e2);
-            ea1.setDataDeAvaliacao(LocalDateTime.now().minusHours(5));
+            ea3.setDataDeAvaliacao(LocalDateTime.now().minusHours(5));
             ea3.setNota(9);
 
             atividadeService.save(a1);
