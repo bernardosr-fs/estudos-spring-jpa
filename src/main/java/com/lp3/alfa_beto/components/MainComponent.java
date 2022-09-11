@@ -73,7 +73,7 @@ public class MainComponent {
         List<Atividade> atividades = atividadeService.findAllByTituloOrDescricao("Atividade 2",
                 "Qual a cor do cavalo branco de Napoleão?");
 
-        System.out.println();
+        System.out.println("Consulta A)");
         for (Atividade atividade : atividades) {
             System.out.println(atividade.toString());
         }
@@ -83,6 +83,27 @@ public class MainComponent {
     /*
      * Listar atividades por usuário (parâmetro: id ou objeto usuário)
      */
+    public void consultaB() {
+        // Deve ter duas atividades no retorno (ea1 e ea2)
+        List<Atividade> atividades = atividadeService.findAllByIdEstudante(1L);
+
+        System.out.println("Consulta B)");
+        for (Atividade atividade : atividades) {
+            EstudanteAtividade ea = estudanteAtividadeService.findByAtividade(atividade).get();
+
+            System.out.println("Atividade: Id: "
+                    + atividade.getId()
+                    + ", Titulo: "
+                    + atividade.getTitulo()
+                    + ", Descricao: "
+                    + atividade.getDescricao()
+                    + ", Nota: "
+                    + ea.getNota()
+                    + ", Data: "
+                    + ea.getDataDeAvaliacao());
+        }
+        System.out.println();
+    }
 
     /*
      * Listar medalhas por usuário (parâmetro: id ou objeto usuário)
@@ -138,12 +159,15 @@ public class MainComponent {
      */
     public void criarAtividades() {
         if (atividadeService.findAll().size() == 0) {
+            a1.setId(1L);
             a1.setDescricao("Qual a cor do cavalo branco de Napoleão?");
             a1.setTitulo("Atividade Napoleão");
 
+            a2.setId(2L);
             a2.setDescricao("Onde nasceu Napoleão?");
             a2.setTitulo("Atividade Napoleão");
 
+            a3.setId(3L);
             a3.setDescricao("Qual a soma de 2 + 2?");
             a3.setTitulo("Atividade 2");
 
