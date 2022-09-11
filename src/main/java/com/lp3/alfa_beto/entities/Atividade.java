@@ -3,18 +3,21 @@ package com.lp3.alfa_beto.entities;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Atividade {
 
     @Id

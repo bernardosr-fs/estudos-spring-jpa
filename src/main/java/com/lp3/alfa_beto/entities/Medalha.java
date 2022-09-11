@@ -2,6 +2,7 @@ package com.lp3.alfa_beto.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,13 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Medalha {
 
     @Id
@@ -28,5 +31,5 @@ public class Medalha {
     private String titulo;
 
     @ManyToMany(mappedBy = "medalhas")
-    private List<Estudante> estudantes;
+    private List<Estudante> estudantes = new ArrayList<Estudante>();
 }
