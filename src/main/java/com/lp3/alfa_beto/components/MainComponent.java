@@ -1,20 +1,19 @@
 package com.lp3.alfa_beto.components;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.lp3.alfa_beto.entities.Atividade;
 import com.lp3.alfa_beto.entities.Estudante;
+import com.lp3.alfa_beto.entities.EstudanteAtividade;
 import com.lp3.alfa_beto.entities.Medalha;
 import com.lp3.alfa_beto.entities.Responsavel;
 import com.lp3.alfa_beto.services.AtividadeService;
+import com.lp3.alfa_beto.services.EstudanteAtividadeService;
 import com.lp3.alfa_beto.services.EstudanteService;
 import com.lp3.alfa_beto.services.MedalhaService;
 import com.lp3.alfa_beto.services.ResponsavelService;
@@ -29,6 +28,10 @@ public class MainComponent {
     Atividade a2 = new Atividade();
     Atividade a3 = new Atividade();
 
+    EstudanteAtividade ea1 = new EstudanteAtividade();
+    EstudanteAtividade ea2 = new EstudanteAtividade();
+    EstudanteAtividade ea3 = new EstudanteAtividade();
+
     Medalha m1 = new Medalha();
     Medalha m2 = new Medalha();
 
@@ -37,6 +40,9 @@ public class MainComponent {
 
     @Autowired
     private AtividadeService atividadeService;
+
+    @Autowired
+    private EstudanteAtividadeService estudanteAtividadeService;
 
     @Autowired
     private EstudanteService estudanteService;
@@ -50,10 +56,11 @@ public class MainComponent {
     @PostConstruct
     public void run() {
         criarEstudantes();
+        criarAtividades();
         criarMedalhas();
         criarResponsaveis();
 
-       // consultaB();
+        // consultaB();
     }
 
     /*
@@ -119,6 +126,41 @@ public class MainComponent {
     /*
      * Cria três atividades de exemplo
      */
+    public void criarAtividades() {
+        if (atividadeService.findAll().size() == 0) {
+            a1.setDescricao("Qual a cor do cavalo branco de Napoleão?");
+            a1.setTitulo("Atividade Napoleão");
+
+            a2.setDescricao("Onde nasceu Napoleão?");
+            a2.setTitulo("Atividade Napoleão");
+
+            a3.setDescricao("Qual a soma de 2 + 2?");
+            a3.setTitulo("Atividade 2");
+
+            ea1.setAtividade(a1);
+            ea1.setEstudante(e1);
+            ea1.setDataDeAvaliacao(LocalDateTime.now().minusHours(3));
+            ea1.setNota(10);
+
+            ea2.setAtividade(a1);
+            ea2.setEstudante(e1);
+            ea1.setDataDeAvaliacao(LocalDateTime.now().minusHours(4));
+            ea2.setNota(9.5);
+
+            ea3.setAtividade(a3);
+            ea3.setEstudante(e2);
+            ea1.setDataDeAvaliacao(LocalDateTime.now().minusHours(5));
+            ea3.setNota(9);
+
+            atividadeService.save(a1);
+            atividadeService.save(a2);
+            atividadeService.save(a3);
+
+            estudanteAtividadeService.save(ea1);
+            estudanteAtividadeService.save(ea2);
+            estudanteAtividadeService.save(ea3);
+        }
+    }
 
     /*
      * Cria duas medalhas de exemplo

@@ -14,8 +14,11 @@ public class EstudanteAtividadeService {
     @Autowired
     private EstudanteAtividadeRepository estudanteAtividadeRepository;
 
-    // find all estudanteAtividade
     public List<EstudanteAtividade> findAll() {
         return estudanteAtividadeRepository.findAll();
+    }
+
+    public void save(EstudanteAtividade estudanteAtividade) {
+        estudanteAtividadeRepository.save(estudanteAtividade);
     }
 }
