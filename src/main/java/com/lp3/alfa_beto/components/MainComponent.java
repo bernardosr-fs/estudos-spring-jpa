@@ -142,7 +142,7 @@ public class MainComponent {
             ea1.setDataDeAvaliacao(LocalDateTime.now().minusHours(3));
             ea1.setNota(10);
 
-            ea2.setAtividade(a1);
+            ea2.setAtividade(a2);
             ea2.setEstudante(e1);
             ea2.setDataDeAvaliacao(LocalDateTime.now().minusHours(4));
             ea2.setNota(9.5);
