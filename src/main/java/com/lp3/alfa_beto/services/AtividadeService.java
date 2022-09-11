@@ -19,10 +19,6 @@ public class AtividadeService {
         atividadeRepository.save(atividade);
     }
 
-    public List<Atividade> findAllByEstudantes(List<Estudante> estudantes) {
-        return atividadeRepository.findAllByEstudantesIn(estudantes);
-    }
-
     public List<Atividade> findAll() {
         return atividadeRepository.findAll();
     }

@@ -49,12 +49,11 @@ public class MainComponent {
 
     @PostConstruct
     public void run() {
-        // criarEstudantes();
-        // criarAtividades();
-        // criarMedalhas();
-        // criarResponsaveis();
+        criarEstudantes();
+        criarMedalhas();
+        criarResponsaveis();
 
-        consultaB();
+       // consultaB();
     }
 
     /*
@@ -67,32 +66,6 @@ public class MainComponent {
     /*
      * Listar atividades por usuário (parâmetro: id ou objeto usuário)
      */
-    public void consultaB() {
-        Estudante estudante1 = estudanteService.findById(1L).get();
-
-        List<Atividade> atividades = atividadeService.findAllByEstudantes(
-                new ArrayList<Estudante>() {
-                    {
-                        add(estudante1);
-                    }
-                });
-
-        for (Atividade a : Hibernate.initialize(estudante1.getAtividades())) {
-            System.out.println(a.toString());
-        }
-
-        // List<Atividade> atividades2 = atividadeService.findAll();
-
-        // for (Atividade atividade : atividades2) {
-        // System.out.println(atividade.toString());
-        // }
-
-        // System.out.println("Atividades do estudante " + e1.getNome() + " (" +
-        // atividades.size() + ")");
-        // for (Atividade atividade : atividades) {
-        // System.out.println(atividade.toString());
-        // }
-    }
 
     /*
      * Listar medalhas por usuário (parâmetro: id ou objeto usuário)
@@ -146,51 +119,6 @@ public class MainComponent {
     /*
      * Cria três atividades de exemplo
      */
-    public void criarAtividades() {
-        if (atividadeService.findAll().size() == 0) {
-            List<Estudante> estudantes = new ArrayList<>();
-            estudantes.add(e1);
-            estudantes.add(e2);
-
-            a1.setDescricao("Qual a cor do cavalo branco de Napoleão?");
-            a1.setTitulo("Atividade Napoleão");
-            a1.setNota(10);
-            a1.setDataDeAvaliacao(LocalDateTime.now().minusDays(1));
-            a1.setEstudantes(estudantes);
-
-            a2.setDescricao("Onde nasceu Napoleão?");
-            a2.setTitulo("Atividade Napoleão");
-            a2.setNota(8.5);
-            a2.setDataDeAvaliacao(LocalDateTime.now().minusDays(1).minusMinutes(30));
-            a2.setEstudantes(estudantes);
-
-            a3.setDescricao("Qual a soma de 2 + 2?");
-            a3.setTitulo("Atividade 2");
-            a3.setNota(6);
-            a3.setDataDeAvaliacao(LocalDateTime.now().minusDays(2));
-
-            e1.setAtividades(new ArrayList<Atividade>() {
-                {
-                    add(a1);
-                    add(a2);
-                }
-            });
-
-            e2.setAtividades(new ArrayList<Atividade>() {
-                {
-                    add(a1);
-                    add(a2);
-                }
-            });
-
-            atividadeService.save(a1);
-            atividadeService.save(a2);
-            atividadeService.save(a3);
-
-            estudanteService.save(e1);
-            estudanteService.save(e2);
-        }
-    }
 
     /*
      * Cria duas medalhas de exemplo
