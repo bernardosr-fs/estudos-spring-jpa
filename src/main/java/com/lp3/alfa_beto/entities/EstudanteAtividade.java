@@ -36,4 +36,11 @@ public class EstudanteAtividade {
     @ManyToOne
     @JoinColumn(name = "id_atividade")
     private Atividade atividade;
+
+    @Override
+    public String toString() {
+        return "EstudanteAtividade [id=" + id + ", nota=" + nota + ", dataDeAvaliacao=" + dataDeAvaliacao
+                + ", estudante="
+                + estudante.toString() + ", atividade=" + atividade.toString() + "]";
+    }
 }

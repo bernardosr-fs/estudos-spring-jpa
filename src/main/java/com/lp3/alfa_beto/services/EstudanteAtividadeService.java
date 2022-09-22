@@ -1,5 +1,6 @@
 package com.lp3.alfa_beto.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,5 +27,9 @@ public class EstudanteAtividadeService {
 
     public Optional<EstudanteAtividade> findByAtividade(Atividade atividade) {
         return estudanteAtividadeRepository.findByAtividade(atividade);
+    }
+
+    public List<EstudanteAtividade> findAllBetween(LocalDateTime dataInicial, LocalDateTime dataFinal) {
+        return estudanteAtividadeRepository.findAllBetweenDataInicialAndDataFinal(dataInicial, dataFinal);
     }
 }

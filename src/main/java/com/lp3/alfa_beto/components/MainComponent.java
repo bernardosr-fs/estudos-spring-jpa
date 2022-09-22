@@ -63,6 +63,9 @@ public class MainComponent {
 
         // consultaA();
         // consultaB();
+        // consultaC();
+        // consultaD();
+        consultaE();
     }
 
     /*
@@ -130,6 +133,22 @@ public class MainComponent {
         // for (Estudante estudante : estudantes) {
         // System.out.println(estudante.toString());
         // }
+    }
+
+    /*
+     * Listar atividades por intervalo de data de avaliação (parâmetros: data
+     * inicial e data final)
+     */
+    public void consultaE() {
+        List<EstudanteAtividade> estudanteAtividades = estudanteAtividadeService
+                .findAllBetween(LocalDateTime.now().minusDays(2), LocalDateTime.now().plusDays(1));
+
+        System.out.println("Consulta E)");
+        for (EstudanteAtividade estudanteAtividade : estudanteAtividades) {
+            System.out.println(estudanteAtividade.toString());
+            System.out.println("------------------------");
+        }
+        System.out.println();
     }
 
     /*
