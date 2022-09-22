@@ -25,11 +25,12 @@ public class EstudanteAtividadeService {
         estudanteAtividadeRepository.save(estudanteAtividade);
     }
 
-    public Optional<EstudanteAtividade> findByAtividade(Atividade atividade) {
-        return estudanteAtividadeRepository.findByAtividade(atividade);
-    }
-
+    // LETRA E)
     public List<EstudanteAtividade> findAllBetween(LocalDateTime dataInicial, LocalDateTime dataFinal) {
         return estudanteAtividadeRepository.findAllBetweenDataInicialAndDataFinal(dataInicial, dataFinal);
+    }
+
+    public Optional<EstudanteAtividade> findByAtividade(Atividade atividade) {
+        return estudanteAtividadeRepository.findByAtividade(atividade);
     }
 }

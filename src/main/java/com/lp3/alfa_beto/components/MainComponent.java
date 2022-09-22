@@ -70,17 +70,16 @@ public class MainComponent {
 
         // consultaA();
         // consultaB();
-        // consultaC();
-        // consultaD();
+        //consultaC();
+        //consultaD();
         // consultaE();
-        consultaF();
+        //consultaF();
     }
 
     /*
      * Listar atividades por título ou descrição (operador containing)
      */
     public void consultaA() {
-        // Deve retornar a1 e a3
         List<Atividade> atividades = atividadeService.findAllByTituloOrDescricao("Atividade 2",
                 "Qual a cor do cavalo branco de Napoleão?");
 
@@ -95,7 +94,6 @@ public class MainComponent {
      * Listar atividades por usuário (parâmetro: id ou objeto usuário)
      */
     public void consultaB() {
-        // Deve ter duas atividades no retorno (ea1 e ea2)
         List<Atividade> atividades = atividadeService.findAllByIdEstudante(1L);
 
         System.out.println("Consulta B)");
@@ -120,12 +118,12 @@ public class MainComponent {
      * Listar medalhas por usuário (parâmetro: id ou objeto usuário)
      */
     public void consultaC() {
-        // List<Medalha> medalhas = medalhaService.findAllByEstudante(e1);
+        List<Medalha> medalhas = medalhaService.findAllByIdEstudante(1L);
 
-        // System.out.println("Medalhas do estudante " + e1.getNome());
-        // for (Medalha medalha : medalhas) {
-        // System.out.println(medalha.toString());
-        // }
+        System.out.println("Medalhas do estudante:");
+        for (Medalha medalha : medalhas) {
+            System.out.println(medalha.toString());
+        }
     }
 
     /*
@@ -133,14 +131,12 @@ public class MainComponent {
      * objeto medalha)
      */
     public void consultaD() {
-        // List<Estudante> estudantes = estudanteService.findAllByMedalhas(new
-        // ArrayList<>().add(m1));
+        List<Estudante> estudantes = estudanteService.findAllByIdMedalha(1L);
 
-        // System.out.println("Estudantes com a medalha " + m1.getTitulo());
-
-        // for (Estudante estudante : estudantes) {
-        // System.out.println(estudante.toString());
-        // }
+        System.out.println("Estudantes que possuem a medalha:");
+        for (Estudante estudante : estudantes) {
+            System.out.println(estudante.toString());
+        }
     }
 
     /*

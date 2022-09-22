@@ -5,16 +5,14 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Data
@@ -30,6 +28,11 @@ public class Medalha {
 
     private String titulo;
 
-    @ManyToMany(mappedBy = "medalhas")
+    @ManyToMany(mappedBy = "medalhas", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Estudante> estudantes = new ArrayList<Estudante>();
+
+    public void addEstudante(Estudante estudante) {
+        this.estudantes.add(estudante);
+    }
 }

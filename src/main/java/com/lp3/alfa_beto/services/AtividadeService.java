@@ -23,10 +23,12 @@ public class AtividadeService {
         return atividadeRepository.findAll();
     }
 
+    // LETRA A)
     public List<Atividade> findAllByTituloOrDescricao(String titulo, String descricao) {
         return atividadeRepository.findAllByTituloOrDescricaoContainingIgnoreCase(titulo, descricao);
     }
 
+    // LETRA B)
     public List<Atividade> findAllByIdEstudante(Long idEstudante) {
         return atividadeRepository.findAllByIdEstudante(idEstudante);
     }

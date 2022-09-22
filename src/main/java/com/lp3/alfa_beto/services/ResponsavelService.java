@@ -18,7 +18,6 @@ public class ResponsavelService {
         responsavelRepository.save(responsavel);
     }
 
-    // FIND all
     public List<Responsavel> findAll() {
         return responsavelRepository.findAll();
     }

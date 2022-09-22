@@ -2,6 +2,7 @@ package com.lp3.alfa_beto.services;
 
 import java.util.List;
 
+import com.lp3.alfa_beto.entities.Atividade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +20,10 @@ public class MedalhaService {
         medalhaRepository.save(medalha);
     }
 
-    // public List<Medalha> findAllByEstudantes(List<Estudante> estudantes) {
-    // return medalhaRepository.findAllByEstudantes(estudantes);
-    // }
+    // LETRA C)
+    public List<Medalha> findAllByIdEstudante(Long idEstudante) {
+        return medalhaRepository.findByEstudantes_Id(idEstudante);
+    }
 
     public List<Medalha> findAll() {
         return medalhaRepository.findAll();
