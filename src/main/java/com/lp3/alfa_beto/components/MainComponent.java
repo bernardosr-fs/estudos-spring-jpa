@@ -22,6 +22,12 @@ import com.lp3.alfa_beto.services.ResponsavelService;
 @Component
 public class MainComponent {
 
+    /*
+     * Constantes
+     */
+    public final static String ORDER_ASC = "ASC";
+    public final static String ORDER_DESC = "DESC";
+
     Estudante e1 = new Estudante();
     Estudante e2 = new Estudante();
 
@@ -35,6 +41,7 @@ public class MainComponent {
 
     Medalha m1 = new Medalha();
     Medalha m2 = new Medalha();
+    Medalha m3 = new Medalha();
 
     Responsavel r1 = new Responsavel();
     Responsavel r2 = new Responsavel();
@@ -65,7 +72,8 @@ public class MainComponent {
         // consultaB();
         // consultaC();
         // consultaD();
-        consultaE();
+        // consultaE();
+        consultaF();
     }
 
     /*
@@ -152,6 +160,26 @@ public class MainComponent {
     }
 
     /*
+     * Listar usuários ordenados por quantidade de medalhas (parâmetro: sentido do
+     * ordenamento)
+     */
+    public void consultaF() {
+        // List<Estudante> estudantes =
+        // estudanteService.findAllOrderByMedalhas(ORDER_ASC);
+        List<Estudante> estudantes = estudanteService.findAllOrderByMedalhas(ORDER_DESC);
+
+        System.out.println();
+        System.out.println("Consulta F)");
+        System.out.println("Estudantes ordenados por quantidade de medalhas.");
+
+        for (Estudante estudante : estudantes) {
+            System.out.println(estudante.toString());
+            System.out.println("------------------------");
+        }
+        System.out.println();
+    }
+
+    /*
      * Cria dois estudantes para exemplo
      */
     public void criarEstudantes() {
@@ -224,11 +252,15 @@ public class MainComponent {
 
             m2.setTitulo("Pior estudante de todos os tempos!");
 
+            m3.setTitulo("Lacta da Sociedade!");
+
             e1.addMedalha(m1);
             e2.addMedalha(m2);
+            e2.addMedalha(m3);
 
             medalhaService.save(m1);
             medalhaService.save(m2);
+            medalhaService.save(m3);
 
             estudanteService.save(e1);
             estudanteService.save(e2);

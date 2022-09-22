@@ -38,4 +38,16 @@ public class EstudanteService {
     public List<Estudante> findAll() {
         return repository.findAll();
     }
+
+    public List<Estudante> findAllOrderByMedalhas(String sentidoOrdenamento) {
+        List<Estudante> estudantes = repository.findAll();
+
+        if (sentidoOrdenamento.equalsIgnoreCase("ASC")) {
+            estudantes.sort((e1, e2) -> e1.getMedalhas().size() - e2.getMedalhas().size());
+        } else {
+            estudantes.sort((e1, e2) -> e2.getMedalhas().size() - e1.getMedalhas().size());
+        }
+
+        return estudantes;
+    }
 }
