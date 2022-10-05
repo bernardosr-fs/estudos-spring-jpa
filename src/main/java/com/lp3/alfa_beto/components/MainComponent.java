@@ -42,6 +42,8 @@ public class MainComponent {
     Medalha m1 = new Medalha();
     Medalha m2 = new Medalha();
     Medalha m3 = new Medalha();
+    Medalha m4 = new Medalha();
+    Medalha m5 = new Medalha();
 
     Responsavel r1 = new Responsavel();
     Responsavel r2 = new Responsavel();
@@ -63,17 +65,27 @@ public class MainComponent {
 
     @PostConstruct
     public void run() {
+        integrantesDoGrupo();
+
         criarEstudantes();
         criarAtividades();
         criarMedalhas();
         criarResponsaveis();
 
-        // consultaA();
-        // consultaB();
-        //consultaC();
-        //consultaD();
-        // consultaE();
-        //consultaF();
+        consultaA();
+        consultaB();
+        consultaC();
+        consultaD();
+        consultaE();
+        consultaF();
+        consultaG();
+        consultaH();
+    }
+
+    public void integrantesDoGrupo() {
+        System.out.println("Integrantes do grupo:");
+        System.out.println("Andrews Moehlecke, Bernardo Rocha, Diogo Rodrigues e Gabriel Mello.");
+        System.out.println("<----------------------------------------------------------------->");
     }
 
     /*
@@ -84,8 +96,12 @@ public class MainComponent {
                 "Qual a cor do cavalo branco de Napoleão?");
 
         System.out.println("Consulta A)");
+        System.out.println("Atividades com o título ou a descrição:");
+        System.out.println("------------------------");
+
         for (Atividade atividade : atividades) {
             System.out.println(atividade.toString());
+            System.out.println("------------------------");
         }
         System.out.println();
     }
@@ -97,6 +113,9 @@ public class MainComponent {
         List<Atividade> atividades = atividadeService.findAllByIdEstudante(1L);
 
         System.out.println("Consulta B)");
+        System.out.println("Atividades do estudante pelo id:");
+        System.out.println("------------------------");
+
         for (Atividade atividade : atividades) {
             EstudanteAtividade ea = estudanteAtividadeService.findByAtividade(atividade).get();
 
@@ -110,6 +129,7 @@ public class MainComponent {
                     + ea.getNota()
                     + ", Data: "
                     + ea.getDataDeAvaliacao());
+            System.out.println("------------------------");
         }
         System.out.println();
     }
@@ -120,10 +140,15 @@ public class MainComponent {
     public void consultaC() {
         List<Medalha> medalhas = medalhaService.findAllByIdEstudante(1L);
 
+        System.out.println("Consulta C)");
         System.out.println("Medalhas do estudante:");
+        System.out.println("------------------------");
+
         for (Medalha medalha : medalhas) {
             System.out.println(medalha.toString());
+            System.out.println("------------------------");
         }
+        System.out.println();
     }
 
     /*
@@ -133,10 +158,15 @@ public class MainComponent {
     public void consultaD() {
         List<Estudante> estudantes = estudanteService.findAllByIdMedalha(1L);
 
+        System.out.println("Consulta D)");
         System.out.println("Estudantes que possuem a medalha:");
+        System.out.println("------------------------");
+
         for (Estudante estudante : estudantes) {
             System.out.println(estudante.toString());
+            System.out.println("------------------------");
         }
+        System.out.println();
     }
 
     /*
@@ -148,6 +178,13 @@ public class MainComponent {
                 .findAllBetween(LocalDateTime.now().minusDays(2), LocalDateTime.now().plusDays(1));
 
         System.out.println("Consulta E)");
+        System.out.println("Atividades avaliadas entre "
+                + LocalDateTime.now().minusDays(2)
+                + " e "
+                + LocalDateTime.now().plusDays(1));
+
+        System.out.println("------------------------");
+
         for (EstudanteAtividade estudanteAtividade : estudanteAtividades) {
             System.out.println(estudanteAtividade.toString());
             System.out.println("------------------------");
@@ -166,7 +203,8 @@ public class MainComponent {
 
         System.out.println();
         System.out.println("Consulta F)");
-        System.out.println("Estudantes ordenados por quantidade de medalhas.");
+        System.out.println("Estudantes ordenados por quantidade de medalhas:");
+        System.out.println("------------------------");
 
         for (Estudante estudante : estudantes) {
             System.out.println(estudante.toString());
@@ -174,6 +212,44 @@ public class MainComponent {
         }
         System.out.println();
     }
+
+    /*
+     * Listar medalhas que ainda não foram ganhas (não possuem um usuário associado)
+     */
+    public void consultaG() {
+        List<Medalha> medalhas = medalhaService.findAllByEstudantesIsNull();
+
+        System.out.println();
+        System.out.println("Consulta G)");
+        System.out.println("Medalhas que ainda não foram ganhas:");
+        System.out.println("------------------------");
+
+        for (Medalha medalha : medalhas) {
+            System.out.println(medalha.toString());
+            System.out.println("------------------------");
+        }
+        System.out.println();
+    }
+
+    /*
+     * Listar usuários por avaliação na atividade (aqui deve ser definido o tipo de
+     * parâmetro, se será o valor de uma nota ou um feedback específico)
+     */
+    public void consultaH() {
+        List<EstudanteAtividade> estudanteAtividades = estudanteAtividadeService.findAllByNotaBetween(9.4, 10.0);
+
+        System.out.println("Consulta H)");
+        System.out.println("Estudantes que avaliaram a atividade com nota entre 9.4 e 10.0:");
+        System.out.println("------------------------");
+
+        for (EstudanteAtividade estudanteAtividade : estudanteAtividades) {
+            System.out.println(estudanteAtividade.toString());
+            System.out.println("------------------------");
+        }
+        System.out.println();
+    }
+
+    // --------------------------------------------------------------------------------------------------------------------//
 
     /*
      * Cria dois estudantes para exemplo
@@ -244,11 +320,20 @@ public class MainComponent {
      */
     public void criarMedalhas() {
         if (medalhaService.findAll().size() == 0) {
+            m1.setId(1L);
             m1.setTitulo("Melhor estudante de todos os tempos!");
 
+            m2.setId(2L);
             m2.setTitulo("Pior estudante de todos os tempos!");
 
+            m3.setId(3L);
             m3.setTitulo("Lacta da Sociedade!");
+
+            m4.setId(4L);
+            m4.setTitulo("Programador HTML!");
+
+            m5.setId(5L);
+            m5.setTitulo("Programador que não fez gambiarra");
 
             e1.addMedalha(m1);
             e2.addMedalha(m2);
@@ -257,6 +342,8 @@ public class MainComponent {
             medalhaService.save(m1);
             medalhaService.save(m2);
             medalhaService.save(m3);
+            medalhaService.save(m4);
+            medalhaService.save(m5);
 
             estudanteService.save(e1);
             estudanteService.save(e2);

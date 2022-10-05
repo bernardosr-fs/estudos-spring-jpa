@@ -14,4 +14,7 @@ public interface MedalhaRepository extends JpaRepository<Medalha, Long> {
 
     // LETRA C)
     List<Medalha> findByEstudantes_Id(Long id);
+
+    // LETRA D)
+    List<Medalha> findAllByEstudantesIsNull();
 }

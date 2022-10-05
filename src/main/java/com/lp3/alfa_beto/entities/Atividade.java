@@ -2,16 +2,22 @@ package com.lp3.alfa_beto.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Data
@@ -27,7 +33,8 @@ public class Atividade {
     private String descricao;
     private String titulo;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "atividade")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "atividade", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<EstudanteAtividade> estudantes;
 
     @Override

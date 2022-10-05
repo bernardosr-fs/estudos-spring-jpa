@@ -28,4 +28,8 @@ public class MedalhaService {
     public List<Medalha> findAll() {
         return medalhaRepository.findAll();
     }
+
+    public List<Medalha> findAllByEstudantesIsNull() {
+        return medalhaRepository.findAllByEstudantesIsNull();
+    }
 }

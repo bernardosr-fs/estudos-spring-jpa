@@ -33,4 +33,9 @@ public class EstudanteAtividadeService {
     public Optional<EstudanteAtividade> findByAtividade(Atividade atividade) {
         return estudanteAtividadeRepository.findByAtividade(atividade);
     }
+
+    // LETRA H)
+    public List<EstudanteAtividade> findAllByNotaBetween(double from, double to) {
+        return estudanteAtividadeRepository.findAllByNotaBetween(from, to);
+    }
 }

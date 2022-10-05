@@ -20,4 +20,7 @@ public interface EstudanteAtividadeRepository extends JpaRepository<EstudanteAti
     List<EstudanteAtividade> findAllBetweenDataInicialAndDataFinal(LocalDateTime dataInicial, LocalDateTime dataFinal);
 
     Optional<EstudanteAtividade> findByAtividade(Atividade atividade);
+
+    // LETRA H)
+    List<EstudanteAtividade> findAllByNotaBetween(double from, double to);
 }

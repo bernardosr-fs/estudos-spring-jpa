@@ -29,6 +29,7 @@ public class EstudanteService {
         return repository.findByMedalhas_Id(idMedalha);
     }
 
+    // LETRA F)
     public List<Estudante> findAllOrderByMedalhas(String sentidoOrdenamento) {
         List<Estudante> estudantes = repository.findAll();
 
